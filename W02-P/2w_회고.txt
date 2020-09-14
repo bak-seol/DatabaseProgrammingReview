@@ -1,0 +1,27 @@
+# DatabaseProgrammingReview
+회고
+-배웠던 것
+  웹서버 : HTML을 읽는데 PHP코드가 나오면 PHP로 넘겨준다.
+  PHP : 반복적이고 동적인 부분의 코드를 PHP로 짜서 데이터베이스와 CONNECT 한다.
+  데이터베이스 : PHP가 요청한 정보를 주고, 필요하다면 데이터를 받아 저장한다.
+  PHP에서 변수는 앞에 $를 표시한다.
+  GET방식 : 붙여서 전달하는 방식. 보안이 낮음
+  POST방식 : 감싸서 전달하는 방식. 보안이 높음
+  PHP와 DB와의 관계 
+    마치 클라이언트가 서버에게 요청하듯이 PHP가 필요한 정보를 찾기위해 AWS에 정보를 요청하는데, 정보를 요청하기 전에 연결을 해야하고, 연결하기 전에 앞서 연결 정보(기록)을 확인할 수 있는 LOG을 설정해야 한다.
+  웹브라우저에서 아무것도 뜨지 않는다는 것은 2가지 의미 
+   1. 어떠한 정보도 출력하지 않았다.
+   2. 내가 작성한 코드에 오류가 없다.
+-에러해결
+ 뜬 에러 : mysqli_connect(): (hy000/1045): access denied for user 'root'@'localhost' (using password: yes)
+MySQL 서버 포트 번호을 내 컴퓨터의 포트번호를 SHOW VARIABLES WHERE Variable_name = 'port'; 명령어로 조회해 localhost가 아닌 localhost:3307로 바꿔서 해결했습니다.
+
+뜬 에러 : Notice: Undefined index: id in C:\Bitnami\wampstack-7.4.9-0\apache2\htdocs\w02\index.php on line 9
+
+Warning: mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in C:\Bitnami\wampstack-7.4.9-0\apache2\htdocs\w02\index.php on line 11
+
+Notice: Trying to access array offset on value of type null in C:\Bitnami\wampstack-7.4.9-0\apache2\htdocs\w02\index.php on line 13
+
+Notice: Trying to access array offset on value of type null in C:\Bitnami\wampstack-7.4.9-0\apache2\htdocs\w02\index.php on line 14
+
+배열 인덱스에 관련된 에러같은데 아직 해결 X
