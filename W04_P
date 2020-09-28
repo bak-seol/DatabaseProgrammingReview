@@ -1,0 +1,50 @@
+★새로 배운 내용
+새로운 테이블을 생성하고 테이블끼리 left join을 하는 법 
+- SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.id;
+- $query = "SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.id WHERE topic.id={$filtered_id}";    
+php에서 header함수를 사용 하는 방법 
+- header('Location: author.php');
+정보관리 측면에서 하나의 테이블에 모든 정보를 넣는 것은 좋은 방법이 아니라는 것
+url 앞에 view-source를 붙여주면 보기좋은 SQL 문으로 출력가능. ex) view_source:localhost/w04/index.php
+print_r 함수 : 어떤 결과가 나오는지 볼려고 SQL문을 출력.
+HTML 코드로 작성해야 하는 것과 PHP코드로 작성해야 하는 것의 기준
+- 변하는 부분 : PHP로 작성
+- 변하지 않는 부분 : HTML로 작성
+1. 변하는 부분과 변하지 않는 부분을 구분
+2. 변하는 부분을 PHP코드로 변경
+3. 앞에 작성한 전체를 $select_from 변수에 통으로 문자열로 넣음 
+process_create.php 파일이 저자정보를 실제 데이터베이스에 저장 시킬 수 있는 파일
+HTML 코드에서 <tr>과 <td>의 사용법. 
+<tr> : 행
+<td> : 열
+<th> : 제목줄 (굵고 진하고 가운데 정렬)
+데이터 입력을 위한 폼 태그 코드
+        <form action="<?=$form_action?>" method="post">
+            <?=$form_id?>
+            <label for="fname">name:</label><br>
+            <input type="text" id="name" name="name" placeholder="name" value="<?=$escaped['name']?>"><br>
+            <label for="lname">profile:</label><br>
+            <input type="text" id="profile" name="profile" placeholder="profile" value="<?=$escaped['profile']?>"><br><br>
+              <input type="submit" value="<?=$label_submit?>">
+        </form>
+★문제가 발생하거나 고민한 내용 + 해결 과정
+1. author을 update하는 과정에서 아래 폼에 profile은 값이 잘 나오는데 name부분은 값도 안나오고 name이라고만 나와있어서 해맸다.
+--> value에 "<?=$escaped['name']?>" 값이 아닌 그냥 name을 넣어서 나온 에러였다.
+2.목록 메뉴 클릭시 notice 문구랑 by 뒤에 이름 안나오는 문제가 있었다. 문제가 있다고 한 파일엔 아무 문제가 없었고 index문제라는데 모르겠어서 힘들었다.
+--> 알고보니 $query = "SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.id WHERE topic.id={$filtered_id}";   부분을 수정 안했었다.
+3. 새로운 목록 추가 하려고 create 하는데 계속 문제가 발생했다. 이 문제가 가장 해결하는데 애먹었고 원인을 몰라 답답했었다. process_create.php 7번째 줄에 문제가 있다는데 정말 그부분엔
+  런 문제가 없었다. create 관련된 모든 페이지를 다 검사했다.
+  --> 알고보니 교수님 파일을 복사 붙여넣기 하는 과정에서 큰따옴표와 작은따옴표가 이탤릭체로 변경되어 쿼리가 안먹었던 것이었다. 지우고 다시 써주니 작동이 잘 되었다. 대단한 문제인줄 알았는데
+  너무 별거 아니어서 허무했다.
+
+★참고할 만한 내용
+html코드의 테이블 관련 태그 참고
+https://aboooks.tistory.com/59
+
+★회고(+,-,!)
+몇시간 동안 찾아해맨 정말 대단했던 것 같은 문제가 별거 아닌 정말 사소한 문제였다는 것에 허무했고, 앞으로 같은 실수는 반복하지 말아야겠다고 느꼈다. php코드는 여전히 어렵고
+잘 이해가 되지 않는다. 하지만 점점 더 익숙해질 것이다. 아무래도 php를 따로 공부해야 제대로 따라갈 수 있을 것 같다. 점점 구현되어가는 웹페이지를 보며 정말 개발자가 된것만 같은착각에 빠졌다.
+백엔드로 나가고 싶지만 재능이 없는 것 같았는데 진짜 없었다. 더 열심히 해야겠다. 그래도 학교에 백엔드 관련 전공이 정말정말 없는데 이 강의를 들어서 백엔드에 발이라도 담궈볼수 있다는 사실이
+매우 다행스럽다. 
+
+유튜브 링크 : https://youtu.be/5x87aD5cpOI
