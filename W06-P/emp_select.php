@@ -3,7 +3,7 @@
   $query = "SELECT * FROM employees  ORDER BY emp_no DESC LIMIT 11";
   $result = mysqli_query($link, $query);
   //print_r($result);  
-  $row = mysqli_fetch_array($result);
+  //$row = mysqli_fetch_array($result);
   //print_r($row);
   $emp_info = '';
   while($row = mysqli_fetch_array($result)) {

@@ -6,11 +6,21 @@
         $filtered_id = mysqli_real_escape_string($link, $_POST['emp_no']);        
     }
 
-       
-    $query = " SELECT * FROM employees WHERE emp_no='{$filtered_id}' ";    
+    $query = "SELECT emp_no FROM employees ORDER BY emp_no DESC LIMIT 1";
     $result = mysqli_query($link, $query);
     $row = mysqli_fetch_array($result);
-    //print_r($row);
+    $next_emp_num = strval((int)$row['emp_no'] + 1);
+
+    if((int)$filtered_id >= (int)$next_emp_num) {
+        echo '해당하는 직원이 없습니다. 직원번호를 다시 입력해 주십시오. <br><a href="index.php">돌아가기</a>' ;
+        exit();
+    }
+    else{
+        $query = " SELECT * FROM employees WHERE emp_no='{$filtered_id}' "; 
+        $result = mysqli_query($link, $query);
+        $row = mysqli_fetch_array($result);
+        //print_r($row);}
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,4 +47,3 @@
     </form>
 </body>
 </html>
-
