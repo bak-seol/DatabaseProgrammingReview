@@ -43,7 +43,7 @@ public class Test {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
-		String sql = "select * from ( select * from jobs order by rownum desc ) where rownum = 1";		
+		String sql = "select * from ( select * from departments order by rownum desc ) where rownum = 1";		
 		try {
 			conn = getConn();
 			pstm = conn.prepareStatement(sql);
@@ -51,10 +51,10 @@ public class Test {
 			int count = 0;
 			
 			while(rs.next()) {
-				System.out.print("\njob_id: " + rs.getString("job_id"));
-				System.out.print("\tjob_title: " + rs.getString("job_title"));
-				System.out.print("\tmin_salary: " + rs.getString("min_salary"));
-				System.out.println("\tmax_salary: " + rs.getString("min_salary"));
+				System.out.print("\ndepartment_id: " + rs.getString("department_id"));
+				System.out.print("\tdepartment_name: " + rs.getString("department_name"));
+				System.out.print("\tmanager_id: " + rs.getString("manager_id"));
+				System.out.println("\tlocation_id: " + rs.getString("location_id"));
 				count = count + 1;
 			}			
 			System.out.println(count + " row selected\n");									
@@ -67,7 +67,7 @@ public class Test {
 	private void update() {
 		Connection conn = null;
 		PreparedStatement pstm = null;		
-		String sql = "update jobs set min_salary = 5000 where job_id = 'ad_pres'";		
+		String sql = "update departments set manager_id=100 where department_id = 270";		
 		try {
 			conn = getConn();
 			pstm = conn.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class Test {
 	private void insert() {
 		Connection conn = null;
 		PreparedStatement pstm = null;		
-		String sql = "insert into jobs values ('AD_REP', 'Administration Accountant', '6000', '20000')";
+		String sql = "insert into departments values (280, 'Administration Accountant', '201', '1800')";
 		
 		try {
 			conn = getConn();
@@ -99,7 +99,7 @@ public class Test {
 	private void delete() {
 		Connection conn = null;
 		PreparedStatement pstm = null;		
-		String sql = "delete from jobs where job_id = 'AD_REP'";
+		String sql = "delete from departments where department_id = 280";
 		
 		try {
 			conn = getConn();
