@@ -19,6 +19,7 @@ Test.jsp : 오라클 데이터베이스 있는 정보를 일단 접속을 해서
 - https://myjamong.tistory.com/167
 - https://june86.tistory.com/entry/rror%ED%98%84%EC%83%81-%EC%A4%91IO-%EC%98%88%EC%99%B8-%EC%83%81%ED%99%A9-The-Network-Adapter-could-not-establish-the-connection
 
+- sql문 참고 : https://great-yo.tistory.com/76
 
 *회고 (+,-,!)
 <플러스> : 온갖 오류를 구글링하고 해결법을 찾아해맨 덕분에 구글링 실력이 아주 조금 늘어난 것 같다 
